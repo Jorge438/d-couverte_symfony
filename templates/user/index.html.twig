@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    <style>
+
+        .filler{
+            margin-top: 3rem;
+        }
+        @keyframes move_wave {
+            0% {
+                transform: translateX(0) translateZ(0) scaleY(1)
+            }
+            50% {
+                transform: translateX(-25%) translateZ(0) scaleY(0.55)
+            }
+            100% {
+                transform: translateX(-50%) translateZ(0) scaleY(1)
+            }
+        }
+        .waveWrapper {
+            z-index: -2;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+        .waveWrapperInner {
+            position: absolute;
+            width: 100%;
+            overflow: hidden;
+            height: 50%;
+            /*bottom: -1px;*/
+            background-image: linear-gradient(to top, #efcd5d  20%, #95d387 80%);
+        }
+        .bgTop {
+            z-index: 15;
+            opacity: 0.5;
+        }
+        .bgMiddle {
+            z-index: 10;
+            opacity: 0.75;
+        }
+        .bgBottom {
+            z-index: 5;
+        }
+        .wave {
+            position: absolute;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat no-repeat;
+            background-position: 0 bottom;
+            transform-origin: center bottom;
+        }
+        .waveTop {
+            background-size: 50% 100px;
+        }
+        .waveAnimation .waveTop {
+            animation: move-wave 3s;
+            -webkit-animation: move-wave 3s;
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+        }
+        .waveMiddle {
+            background-size: 50% 120px;
+        }
+        .waveAnimation .waveMiddle {
+            animation: move_wave 10s linear infinite;
+        }
+        .waveBottom {
+            background-size: 50% 100px;
+        }
+        .waveAnimation .waveBottom {
+            animation: move_wave 15s linear infinite;
+        }
+        .backgroundAnimation{
+            position: absolute;
+        }
+
+        .second{
+            margin-top: 22rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .third{
+            margin-top: 12rem;
+            margin-bottom: 18rem;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+{#Animation du Haut#}
+    <div class="waveWrapper waveAnimation backgroundAnimation">
+        <div class="waveWrapperInner bgTop">
+            <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+        </div>
+    </div>
+
+    <div class="container filler">
+        <h1 class="text-center text-white font-weight-bold display-3"> Welcome
+            {% if app.user %}
+                {{ app.user.getUsername() }}
+            {% endif %}
+        </h1>
+    </div>
+
+    <div class="container second">
+        <p class="col-md-6">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, nisi non. Accusantium aliquam corporis
+        esse excepturi, unde veniam? Amet debitis fugiat incidunt inventore, ipsum libero nam officia perferendis
+        placeat praesentium quas, qui soluta voluptatum. Assumenda deleniti dolore earum error eum explicabo hic
+        inventore ipsum iusto, pariatur placeat porro quasi quisquam repellat sed. A cum deserunt eius minus
+        possimus ullam ut! Ad assumenda consequuntur dicta dolore dolorum facilis hic illo incidunt ipsam libero
+        necessitatibus neque, obcaecati optio, provident, repellat ut vitae voluptas. A accusantium alias
+        </p>
+        <img src="https://millet-paysage.com/wp-content/uploads/2020/01/millet-paysage-amenagement-mottets.jpg" class="col-md-4">
+    </div>
+
+    <div class="container third">
+        <img src="https://millet-paysage.com/wp-content/uploads/2020/01/millet-paysage-amenagement-mottets.jpg" class="col-md-4">
+        <p class="col-md-6">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, nisi non. Accusantium aliquam corporis
+            esse excepturi, unde veniam? Amet debitis fugiat incidunt inventore, ipsum libero nam officia perferendis
+            placeat praesentium quas, qui soluta voluptatum. Assumenda deleniti dolore earum error eum explicabo hic
+            inventore ipsum iusto, pariatur placeat porro quasi quisquam repellat sed. A cum deserunt eius minus
+            possimus ullam ut! Ad assumenda consequuntur dicta dolore dolorum facilis hic illo incidunt ipsam libero
+            necessitatibus neque, obcaecati optio, provident, repellat ut vitae voluptas. A accusantium alias
+        </p>
+    </div>
+{% endblock %}
